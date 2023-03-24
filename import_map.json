@@ -1,6 +1,7 @@
 {
   "imports": {
     "@zod/": "https://deno.land/x/zod@v3.21.4/",
-    "@std/": "https://deno.land/std@0.180.0/"
+    "@std/": "https://deno.land/std@0.180.0/",
+    "@infra/": "./src/infrastructure/"
   }
 }
