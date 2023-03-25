@@ -1,0 +1,4 @@
+# test coverage
+cov_profile.lcov
+cov_profile/
+cov_report/
