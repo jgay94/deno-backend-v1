@@ -14,6 +14,7 @@ src/
 │   ├── repository/
 │   │   ├── mod.ts
 │   │   ├── base.ts
+│   │   ├── contact.ts
 │   │   └── typings.d.ts
 │   └── storage/
 │       ├── mod.ts
