@@ -1,4 +1,4 @@
-import { Id, Identifiable, IStorage } from "@infra/storage/typings.d.ts";
+import { Id, Identifiable, IStorage } from "./typings.d.ts";
 
 /**
  * A filesystem implementation of the IStorage interface for managing identifiable items.
@@ -10,7 +10,7 @@ import { Id, Identifiable, IStorage } from "@infra/storage/typings.d.ts";
 export class FileStorage<T extends Identifiable> implements IStorage<T> {
   private filePath: string;
 
-  public constructor(filePath: string) {
+  constructor(filePath: string) {
     this.filePath = filePath;
   }
 

@@ -1,4 +1,4 @@
-import { Id, Identifiable, IStorage } from "@infra/storage/typings.d.ts";
+import { Id, Identifiable, IStorage } from "./typings.d.ts";
 
 /**
  * An in-memory implementation of the IStorage interface for managing identifiable items.
@@ -10,7 +10,7 @@ import { Id, Identifiable, IStorage } from "@infra/storage/typings.d.ts";
 export class MemoryStorage<T extends Identifiable> implements IStorage<T> {
   private storage: Map<Id, T>;
 
-  public constructor() {
+  constructor() {
     this.storage = new Map<Id, T>();
   }
 

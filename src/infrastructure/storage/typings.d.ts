@@ -10,7 +10,7 @@ export interface Identifiable {
   /**
    * The unique identifier of the object.
    */
-  id: Id;
+  readonly id: Id;
 }
 
 /**
@@ -20,14 +20,14 @@ export interface Identifiable {
  */
 export interface IStorage<T extends Identifiable> {
   /**
-   * Retrieves all items from storage.
+   * Retrieves all items from the storage.
    *
    * @returns A promise that resolves to an array of all items.
    */
   getAll(): Promise<T[]>;
 
   /**
-   * Retrieves an item from storage by its ID.
+   * Retrieves an item from the storage by its ID.
    *
    * @param id - The ID of the item to retrieve.
    * @returns A promise that resolves to the item if found, or null if not found.
@@ -35,7 +35,7 @@ export interface IStorage<T extends Identifiable> {
   getById(id: Id): Promise<T | null>;
 
   /**
-   * Creates a new item in storage.
+   * Creates a new item in the storage.
    *
    * @param item - The item to create.
    * @returns A promise that resolves to the created item.
@@ -43,7 +43,7 @@ export interface IStorage<T extends Identifiable> {
   create(item: T): Promise<T>;
 
   /**
-   * Updates an existing item in storage.
+   * Updates an existing item in the storage.
    *
    * @param id - The ID of the item to update.
    * @param item - The updated item.
@@ -52,7 +52,7 @@ export interface IStorage<T extends Identifiable> {
   update(id: Id, item: T): Promise<T | null>;
 
   /**
-   * Creates a new item in storage or updates an existing item if it already exists.
+   * Creates a new item in the storage or updates an existing item if it already exists.
    *
    * @param item - The item to create or update.
    * @returns A promise that resolves to the created or updated item.
@@ -75,7 +75,7 @@ export interface IStorage<T extends Identifiable> {
   clear(): Promise<void>;
 
   /**
-   * Checks if an item with the specified ID exists in storage.
+   * Checks if an item with the specified ID exists in the storage.
    *
    * @param id - The ID of the item to check.
    * @returns A promise that resolves to a boolean indicating whether the item exists.

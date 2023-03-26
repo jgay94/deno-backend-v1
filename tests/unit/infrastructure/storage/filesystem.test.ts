@@ -459,56 +459,56 @@ describe("FileStorage", () => {
         { id: "1", name: "Item 1" },
         { id: "2", name: "Item 2" },
       ];
-  
+
       // Create a Map with the items
       const itemMap = new Map(items.map((item) => [item.id, item]));
-  
+
       // Write test data to the JSON file
       await Deno.writeTextFile(
         testFilePath,
         JSON.stringify(Object.fromEntries(itemMap)),
       );
-  
+
       const storage = new FileStorage<TestItem>(testFilePath);
       const exists1 = await storage.exists("1");
       const exists2 = await storage.exists("2");
-  
+
       assertEquals(
         exists1,
         true,
         "The storage should return true if an item with the given ID exists in the JSON file",
       );
-  
+
       assertEquals(
         exists2,
         true,
         "The storage should return true if an item with the given ID exists in the JSON file",
       );
     });
-  
+
     it("should return false if an item with the given ID does not exist in the JSON file", async () => {
       const items: TestItem[] = [
         { id: "1", name: "Item 1" },
         { id: "2", name: "Item 2" },
       ];
-  
+
       // Write test data to the JSON file
       await Deno.writeTextFile(testFilePath, JSON.stringify(items));
-  
+
       const storage = new FileStorage<TestItem>(testFilePath);
       const exists = await storage.exists("3");
-  
+
       assertEquals(
         exists,
         false,
         "The storage should return false if an item with the given ID does not exist in the JSON file",
       );
     });
-  
+
     it("should return false if the JSON file does not exist", async () => {
       const storage = new FileStorage<TestItem>(testFilePath);
       const exists = await storage.exists("1");
-  
+
       assertEquals(
         exists,
         false,
@@ -523,29 +523,29 @@ describe("FileStorage", () => {
         { id: "1", name: "Item 1" },
         { id: "2", name: "Item 2" },
       ];
-  
+
       // Write test data to the JSON file
       await Deno.writeTextFile(testFilePath, JSON.stringify(items));
-  
+
       const storage = new FileStorage<TestItem>(testFilePath);
       const itemCount = await storage.count();
-  
+
       assertEquals(
         itemCount,
         items.length,
         "The storage should return the number of items in the JSON file",
       );
     });
-  
+
     it("should return 0 if the JSON file does not exist", async () => {
       const storage = new FileStorage<TestItem>(testFilePath);
       const itemCount = await storage.count();
-  
+
       assertEquals(
         itemCount,
         0,
         "The storage should return 0 if the JSON file does not exist",
       );
     });
-  });  
+  });
 });
