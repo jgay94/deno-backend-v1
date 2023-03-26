@@ -49,7 +49,7 @@ export interface IStorage<T extends Identifiable> {
    * @param item - The updated item.
    * @returns A promise that resolves to the updated item if found, or null if not found.
    */
-  update(id: Id, item: T): Promise<T | null>;
+  update(id: Id, item: Partial<T>): Promise<T | null>;
 
   /**
    * Creates a new item in the storage or updates an existing item if it already exists.

@@ -64,14 +64,18 @@ export class FileStorage<T extends Identifiable> implements IStorage<T> {
     return item;
   }
 
-  public async update(id: Id, item: T): Promise<T | null> {
+  public async update(id: Id, item: Partial<T>): Promise<T | null> {
     const data = await this.readData();
-    if (!data.has(id)) {
+    const currentItem = data.get(id);
+
+    if (!currentItem) {
       return null;
     }
-    data.set(id, item);
+
+    const updatedItem = { ...currentItem, ...item } as T;
+    data.set(id, updatedItem);
     await this.writeData(data);
-    return item;
+    return updatedItem;
   }
 
   public async upsert(item: T): Promise<T> {

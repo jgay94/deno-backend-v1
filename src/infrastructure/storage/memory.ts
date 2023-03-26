@@ -27,13 +27,16 @@ export class MemoryStorage<T extends Identifiable> implements IStorage<T> {
     return Promise.resolve(item);
   }
 
-  public update(id: Id, item: T): Promise<T | null> {
-    if (!this.storage.has(id)) {
+  public update(id: Id, item: Partial<T>): Promise<T | null> {
+    const currentItem = this.storage.get(id);
+
+    if (!currentItem) {
       return Promise.resolve(null);
     }
 
-    this.storage.set(id, item);
-    return Promise.resolve(item);
+    const updatedItem = { ...currentItem, ...item } as T;
+    this.storage.set(id, updatedItem);
+    return Promise.resolve(updatedItem);
   }
 
   public upsert(item: T): Promise<T> {
