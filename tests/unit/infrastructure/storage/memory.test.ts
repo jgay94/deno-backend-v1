@@ -70,6 +70,7 @@ describe("MemoryStorage", () => {
         item,
         "The created item should match the input item",
       );
+
       assertEquals(
         storedItem,
         item,
@@ -201,7 +202,12 @@ describe("MemoryStorage", () => {
       await storage.clear();
 
       const count = await storage.count();
-      assertEquals(count, 0, "The storage should be empty after clearing");
+
+      assertEquals(
+        count,
+        0,
+        "The storage should be empty after clearing",
+      );
     });
   });
 
@@ -246,6 +252,7 @@ describe("MemoryStorage", () => {
       await storage.create(items[1]);
 
       const count = await storage.count();
+
       assertEquals(
         count,
         items.length,

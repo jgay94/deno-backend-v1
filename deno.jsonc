@@ -9,10 +9,10 @@
     "ci": "deno task typecheck && deno task lint && deno task test",
     "typecheck": "deno check --remote src/main.ts",
     "lint": "deno lint src/ && deno lint tests/",
-    "test": "deno test tests/",
-    "test:watch": "deno test tests/ --watch",
-    "test:coverage": "deno test tests/ --coverage=cov_profile",
-    "test:coverage:profile": "deno coverage cov_profile --lcov --output=cov_profile.lcov",
+    "test": "deno test -A tests/",
+    "test:watch": "deno test -A tests/ --watch",
+    "test:coverage": "deno test -A tests/ --coverage=cov_profile",
+    "test:coverage:profile": "deno coverage cov_profile/ --lcov --output=cov_profile.lcov",
     "test:coverage:report": "genhtml -o cov_report/html cov_profile.lcov"
   }
 }
