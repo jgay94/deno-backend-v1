@@ -1,5 +1,7 @@
 import { Identifiable, IStorage } from "@infra/storage/mod.ts";
 import { IRepository } from "@infra/repository/mod.ts";
+import { IService } from "@app/service/mod.ts";
+import { ContactEntity } from "./mod.ts";
 
 /**
  * Contact interface represents the structure of a contact object.
@@ -17,10 +19,12 @@ export interface Contact extends Identifiable {
  * IContactStorage interface represents a storage implementation specifically for Contact objects.
  * @extends {IStorage<Contact>} - Extends the IStorage interface with the Contact type.
  */
-export interface IContactStorage extends IStorage<Contact> {}
+export interface IContactStorage extends IStorage<ContactEntity> {}
 
 /**
  * IContactRepository interface represents a repository implementation specifically for Contact objects.
  * @extends {IRepository<Contact>} - Extends the IRepository interface with the Contact type.
  */
-export interface IContactRepository extends IRepository<Contact> {}
+export interface IContactRepository extends IRepository<ContactEntity> {}
+
+export interface IContactService extends IService<ContacEntity> {}

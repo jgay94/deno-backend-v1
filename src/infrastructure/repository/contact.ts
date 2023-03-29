@@ -1,4 +1,4 @@
-import { Contact, IContactStorage, IContactRepository } from "@domain/contact/mod.ts";
+import { Contact, IContactStorage, IContactRepository, ContactEntity } from "@domain/contact/mod.ts";
 
 import { BaseRepository } from "./base.ts";
 
@@ -10,7 +10,7 @@ import { BaseRepository } from "./base.ts";
  * @extends {BaseRepository<Contact>} - Extends the BaseRepository with the Contact type.
  * @implements {IContactRepository} - Implements the IContactRepository interface.
  */
-export class ContactRepository extends BaseRepository<Contact> implements IContactRepository {
+export class ContactRepository extends BaseRepository<ContactEntity> implements IContactRepository {
   /**
    * Constructs a new instance of the ContactRepository class.
    * @param storage - The IContactStorage implementation to use for the CRUD operations.
